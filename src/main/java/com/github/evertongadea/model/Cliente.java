@@ -1,11 +1,27 @@
 package com.github.evertongadea.model;
 
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import lombok.Data;
+
+@Data
+@Entity
 public class Cliente {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private Integer idCliente;
     private String nome;
-    
-    
+
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedidos;
     
     public Cliente() {
 	}
@@ -14,32 +30,14 @@ public class Cliente {
 		this.nome = nome;
 	}
 	
-	
-
 	public Cliente(Integer idCliente, String nome) {
 		this.idCliente = idCliente;
 		this.nome = nome;
 	}
-
-	public Integer getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+	
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + "]";
+		return "Cliente [idCliente=" + this.getIdCliente() + ", nome=" + this.getNome() + "]";
 	}
     
     
