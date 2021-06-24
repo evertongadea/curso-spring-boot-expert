@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -22,7 +24,16 @@ public class Produto {
 	private String descricao;
 	private BigDecimal preco;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "pedido")
 	private Set<ItemPedido> itensPedido;
+	
+	public Produto() {
+	}
+
+	public Produto(String descricao, BigDecimal preco) {
+		this.descricao = descricao;
+		this.preco = preco;
+	}
 
 }
