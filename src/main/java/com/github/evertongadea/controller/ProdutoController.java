@@ -2,6 +2,8 @@ package com.github.evertongadea.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -30,7 +32,7 @@ public class ProdutoController {
 	
 	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Produto salvar(@RequestBody Produto produto) {
+	public Produto salvar(@RequestBody @Valid Produto produto) {
 		return repository.save(produto);
 	}
 
@@ -41,7 +43,7 @@ public class ProdutoController {
 	}
 	
 	@PutMapping("/atualizar/{idProduto}")
-	public void atualizar(@PathVariable Integer idProduto, @RequestBody Produto produto) {
+	public void atualizar(@PathVariable Integer idProduto, @RequestBody @Valid Produto produto) {
 		repository.findById(idProduto)
 					.map(prodEncontrado -> {
 						produto.setIdProduto(prodEncontrado.getIdProduto());

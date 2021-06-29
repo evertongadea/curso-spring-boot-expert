@@ -78,9 +78,9 @@ public class VendasApplication {
 //	}
 //	
 	private void inserirClientes(ClienteRepository clienteRepository) {
-		clienteRepository.save(new Cliente("Paulo", "1232344456"));
-		clienteRepository.save(new Cliente("João"));
-		clienteRepository.save(new Cliente("Pedro", "11222222343"));
+		clienteRepository.save(new Cliente("Paulo", "23590330007"));
+		clienteRepository.save(new Cliente("João", "46360723085"));
+		clienteRepository.save(new Cliente("Pedro", "98460978087"));
 	}
 	
 	private void inserirProdutos(ProdutoRepository produtoRepository) {

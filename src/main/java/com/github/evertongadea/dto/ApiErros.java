@@ -13,6 +13,9 @@ public class ApiErros {
 	public ApiErros(String erros) {
 		this.erros = Arrays.asList(erros);
 	}
-	
+
+	public ApiErros(List<String> erros) {
+		this.erros = erros;
+	}
 	
 }

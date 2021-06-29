@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,7 +23,10 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idProduto;
 	
+	@NotEmpty(message = "{campo.produto.descricao.obrigatorio}")
 	private String descricao;
+	
+	@NotNull(message = "{campo.produto.preco.obrigatorio}")
 	private BigDecimal preco;
 	
 	@JsonIgnore
